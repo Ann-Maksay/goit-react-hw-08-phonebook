@@ -1,20 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import Button from "react-bootstrap/Button";
+
 const ContactListItem = ({ name, number, id, handleDelete }) => {
   return (
     <li className="contactListItem">
-      <p>
+      <p className="contactListText">
         {name}: {number}
       </p>
-      <button
+      <Button
         type="button"
         name={id}
         onClick={handleDelete}
         className="contactListDeleteButton"
       >
         Delete
-      </button>
+      </Button>
     </li>
   );
 };

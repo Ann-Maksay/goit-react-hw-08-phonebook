@@ -22,7 +22,7 @@ const middleware = [
 ];
 
 const authPersistConfig = {
-  key: "auth",
+  key: "token",
   storage,
   whitelist: ["token"],
 };
@@ -38,4 +38,6 @@ const store = configureStore({
 
 const persistor = persistStore(store);
 
-export default { store, persistor };
+const fullStore = { store, persistor };
+
+export default fullStore;

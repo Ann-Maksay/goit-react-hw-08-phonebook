@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+
+import { logIn } from "../../redux/auth/auth-operations";
 
 class LoginForm extends Component {
   state = {
@@ -17,6 +20,8 @@ class LoginForm extends Component {
   handleSabmit = (e) => {
     e.preventDefault();
 
+    this.props.onLogin(this.state);
+
     this.resetForm();
   };
 
@@ -27,35 +32,43 @@ class LoginForm extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <Form onSubmit={this.handleSabmit}>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            name="email"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
+      <div className="MainContainer loginFormContainer">
+        <Form onSubmit={this.handleSabmit}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              value={email}
+              name="email"
+              onChange={this.handleInputChange}
+              autoComplete="off"
+            />
+          </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Password"
-            value={password}
-            name="password"
-            onChange={this.handleInputChange}
-          />
-        </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              value={password}
+              name="password"
+              onChange={this.handleInputChange}
+              autoComplete="off"
+            />
+          </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Login
-        </Button>
-      </Form>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
+      </div>
     );
   }
 }
 
-export default LoginForm;
+const mapDipatchToProps = {
+  onLogin: logIn,
+};
+
+export default connect(null, mapDipatchToProps)(LoginForm);

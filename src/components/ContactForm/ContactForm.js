@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 
+import Button from "react-bootstrap/Button";
+
+import Form from "react-bootstrap/Form";
+
 import { FormWrapper } from "./ContactFormStyled";
 import { addContacts } from "../../redux/phonebook/phonebook-operation";
 
@@ -44,10 +48,10 @@ class ContactForm extends Component {
     const { name, number } = this.state;
     return (
       <FormWrapper>
-        <form onSubmit={this.handleSubmit}>
-          <label className="formItem">
-            <p className="lableTitle">Name</p>
-            <input
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formName">
+            <Form.Label className="lableTitle">Name</Form.Label>
+            <Form.Control
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -57,10 +61,10 @@ class ContactForm extends Component {
               value={name}
               onChange={this.handleChangeForm}
             />
-          </label>
-          <label className="formItem">
-            <p className="lableTitle">Number</p>
-            <input
+          </Form.Group>
+          <Form.Group controlId="formNumber">
+            <Form.Label className="lableTitle">Number</Form.Label>
+            <Form.Control
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -70,11 +74,9 @@ class ContactForm extends Component {
               value={number}
               onChange={this.handleChangeForm}
             />
-          </label>
-          <button type="submit" className="submitButton">
-            Add contact
-          </button>
-        </form>
+          </Form.Group>
+          <Button type="submit">Add contact</Button>
+        </Form>
       </FormWrapper>
     );
   }

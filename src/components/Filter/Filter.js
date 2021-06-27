@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+import Form from "react-bootstrap/Form";
+
 import { FilterWrapper } from "./FilterStyled";
 import { changeFilter } from "../../redux/phonebook/phonebook-actions";
 import { getFilter } from "../../redux/phonebook/phonebook-selectors";
@@ -13,10 +15,16 @@ const Filter = ({ setFilter, value }) => {
 
   return (
     <FilterWrapper>
-      <label>
-        Filter:
-        <input tupe="text" value={value} onChange={handleChange}></input>
-      </label>
+      <Form.Group controlId="formSearchQuery">
+        <Form.Label>
+          Filter:
+          <Form.Control
+            tupe="text"
+            value={value}
+            onChange={handleChange}
+          ></Form.Control>
+        </Form.Label>
+      </Form.Group>
     </FilterWrapper>
   );
 };

@@ -1,7 +1,11 @@
 import React from "react";
 
 const HomePage = () => {
-  return <></>;
+  return (
+    <>
+      <h1 className="mainPageTitle">Welcome to Phonebook</h1>
+    </>
+  );
 };
 
 export default HomePage;
