@@ -1,7 +1,7 @@
 import axios from "axios";
 import { fetchActions, addActions, deleteActions } from "./phonebook-actions";
 
-axios.defaults.baseURL = "http://connections-api.herokuapp.com";
+axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 export const fetchContacts = () => async (dispatch) => {
   dispatch(fetchActions.fetchContactRequest());
